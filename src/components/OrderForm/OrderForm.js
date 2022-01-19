@@ -53,11 +53,11 @@ class OrderForm extends Component {
 
         { ingredientButtons }
 
-        <p>Order: {this.state.ingredients.length > 1 && this.state.ingredients.join(', ') || 'Nothing selected' }</p>
+        <p>Order: {this.state.ingredients.join(', ') || 'Name and at least 1 ingredient required' }</p>
 
-        <button onClick={e => this.handleSubmit(e)}>
+        {this.state.name && this.state.ingredients.length > 0 && <button onClick={e => this.handleSubmit(e)}>
           Submit Order
-        </button>
+        </button>}
       </form>
     )
   }
