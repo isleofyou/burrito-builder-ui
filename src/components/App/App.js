@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getOrders } from '../../apiCalls';
+import { getOrders, postOrder } from '../../apiCalls';
 import Orders from '../../components/Orders/Orders';
 import OrderForm from '../../components/OrderForm/OrderForm';
 
@@ -23,14 +23,13 @@ class App extends Component {
   }
 
   addOrder = (order) => {
-    console.log('new order', order)
     let newOrder = {
+      id: this.state.orders.length + 1,
       ingredients: order.ingredients,
-      name: order.name,
-      id: this.state.orders.length + 1
+      name: order.name
     }
     this.setState({ orders: [...this.state.orders, newOrder]})
-    console.log('all orders', this.state.orders)
+    postOrder(newOrder);
   }
 
   render() {
