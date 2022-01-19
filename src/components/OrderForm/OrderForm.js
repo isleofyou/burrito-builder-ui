@@ -10,6 +10,12 @@ class OrderForm extends Component {
     };
   }
 
+  handleIngredientChange = (e) => {
+    e.preventDefault();
+    this.setState({ ingredients: [...this.state.ingredients, e.target.name]})
+    console.log(e.target.name)
+  }
+
 
   handleSubmit = e => {
     e.preventDefault();
@@ -42,7 +48,7 @@ class OrderForm extends Component {
 
         { ingredientButtons }
 
-        <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
+        <p>Order: {this.state.ingredients.length > 1 && this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
         <button onClick={e => this.handleSubmit(e)}>
           Submit Order
