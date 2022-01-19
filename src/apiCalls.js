@@ -15,3 +15,9 @@ export const postOrder = (order) => {
   }).then(response => response.json())
     .catch(error => window.alert(error));
 }
+
+export const deleteOrder = (order) => {
+  return fetch(`http://localhost:3001/api/v1/orders/${order}`, { method: 'DELETE' })
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
